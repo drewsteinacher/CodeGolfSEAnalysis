@@ -1,0 +1,652 @@
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Download EntityStore", \
+"Section",ExpressionUUID->"ad295a58-9ea3-4162-ac7d-6e3de6d1e908"],
+
+Cell["\<\
+Visit the following URL in a browser to download the EntityStore as a ZIP \
+archive.
+Extract the contents to be loaded in the following section.\
+\>", "Text",ExpressionUUID->"22bed0cd-690a-4d5c-9f85-1ca25f016780"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/objects/andrews/StackExchange2EntityStore/\
+codegolf.stackexchange.com.mx\"",
+     "https://www.wolframcloud.com/objects/andrews/StackExchange2EntityStore/\
+codegolf.stackexchange.com.mx"},
+    "HyperlinkURL"], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/andrews/StackExchange2EntityStore/\
+codegolf.stackexchange.com.mx"],
+  SelectWithContents->
+   True]], "Input",ExpressionUUID->"e6d81ad7-1323-4ec3-8d07-effaece42171"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load EntityStore", \
+"Section",ExpressionUUID->"9bed2d0f-61d5-45e2-83cf-5aaf5020d3a9"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"store", "=", 
+   RowBox[{"Import", "[", "\"\<codegolf.stackexchange.com.mx\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EntityUnregister", "/@", 
+   RowBox[{"store", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"EntityRegister", "[", "store", "]"}]}], "Input",
+ CellChangeTimes->{{3.7608920313427906`*^9, 3.760892059453601*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"35e7099c-09da-4569-a122-662c00536bf3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"StackExchange.Codegolf:User\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Badge\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Comment\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Post\"\>", 
+   ",", "\<\"StackExchange:PostType\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Vote\"\>", 
+   ",", "\<\"StackExchange:VoteType\"\>", 
+   ",", "\<\"StackExchange.Codegolf:PostHistory\"\>", 
+   ",", "\<\"StackExchange:PostHistoryType\"\>", 
+   ",", "\<\"StackExchange:CloseReason\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Tag\"\>"}], "}"}]], "Output",
+ CellLabel->"Out[4]=",ExpressionUUID->"ce2f47a8-87c8-4db1-a953-a0cd0009fa86"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load Paclet", \
+"Section",ExpressionUUID->"766f291c-f021-4b9f-81f4-40f9f80fa2d3"],
+
+Cell["\<\
+The paclet contains definitions for helper functions for processing the data.\
+\>", "Text",ExpressionUUID->"5d03f13b-9740-4065-9ce1-5f941db31aa6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PacletDirectoryAdd", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Get", "[", "\"\<CodeGolfSEAnalysis`\>\"", "]"}]}], "Input",
+ CellLabel->"In[5]:=",ExpressionUUID->"d959f089-e1a8-48c7-b770-c9c805bfb1d9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Run Paclet Tests", \
+"Section",ExpressionUUID->"63558049-b36a-492d-96bf-c84e3a9aadf5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "NiceGrid", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"NiceGrid", "[", 
+     RowBox[{"x_", ",", "opts___"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Once", "[", 
+      RowBox[{"ResourceFunction", "[", "\"\<NiceGrid\>\"", "]"}], "]"}], "[", 
+     RowBox[{
+      RowBox[{"Replace", "[", 
+       RowBox[{"x", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", "}"}], "|", 
+           RowBox[{"<|", "|>"}]}], "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"{", "}"}], "}"}]}], "}"}]}], "]"}], ",", "opts"}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PacletDirectoryAdd", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"FileNames", "[", 
+    RowBox[{"\"\<*.wlt\>\"", ",", 
+     RowBox[{"FileNameJoin", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<Tests\>\""}], 
+       "}"}], "]"}], ",", "Infinity"}], "]"}], "//", 
+   RowBox[{"RightComposition", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"AssociationMap", "[", "TestReport", "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"KeyMap", "[", "FileNameTake", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"Not", "@", 
+        RowBox[{"TrueQ", "[", 
+         RowBox[{"#", "[", "\"\<AllTestsSucceeded\>\"", "]"}], "]"}]}], "&"}],
+       "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", "\"\<TestsFailed\>\"", "]"}], "&"}], "/*", "Values",
+        "/*", 
+       RowBox[{"Apply", "[", "Join", "]"}], "/*", "Values", "/*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"NiceGrid", "[", 
+          RowBox[{"KeyTake", "[", 
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", 
+              RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "\"\<TestID\>\"", ",", "\"\<Input\>\"", ",", 
+              "\"\<ExpectedOutput\>\"", ",", "\"\<ActualOutput\>\"", ",", 
+              "\"\<ActualMessages\>\""}], "}"}]}], "]"}], "]"}], "&"}], 
+        ")"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}], "//", 
+  RowBox[{
+   RowBox[{"NiceGrid", "[", 
+    RowBox[{"#", ",", 
+     RowBox[{"Alignment", "\[Rule]", "Top"}]}], "]"}], "&"}]}]}], "Input",
+ CellLabel->"In[7]:=",ExpressionUUID->"e19e972b-59b8-4ce1-8b7c-b35b27919447"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[GridBox[{
+     {""}
+    },
+    AllowScriptLevelChange->True,
+    AllowedDimensions->Automatic,
+    AutoDelete->False,
+    BaseStyle->{},
+    BaselinePosition->Automatic,
+    DefaultBaseStyle->"Grid",
+    DeleteWithContents->True,
+    Editable->Automatic,
+    FrameStyle->Automatic,
+    GridBoxAlignment->{"Rows" -> {{Top}}},
+    GridBoxBackground->{"Columns" -> {{
+         GrayLevel[1]}}, "Rows" -> {{
+         GrayLevel[1], 
+         RGBColor[0.8500000000000001, 0.8500000000000001, 0.95]}}},
+    GridBoxDividers->{},
+    GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridBoxItemStyle->{"Columns" -> {{None}}, "Rows" -> {{None}}},
+    GridBoxSpacings->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+    GridDefaultElement->"\[Placeholder]",
+    Selectable->Automatic],
+   "Grid"],
+  Grid[{{}}, {Alignment -> Top, Alignment -> {Center, Center}, Background -> {
+      GrayLevel[1], {{
+        GrayLevel[1], 
+        RGBColor[0.8500000000000001, 0.8500000000000001, 0.95]}}}, Frame -> 
+    All, Alignment -> {Center, Baseline}, AllowedDimensions -> Automatic, 
+    AllowScriptLevelChange -> True, AutoDelete -> False, Background -> None, 
+    BaselinePosition -> Automatic, BaseStyle -> {}, DefaultBaseStyle -> 
+    "Grid", DefaultElement -> "\[Placeholder]", DeleteWithContents -> True, 
+    Dividers -> {}, Editable -> Automatic, Frame -> None, FrameStyle -> 
+    Automatic, ItemSize -> Automatic, ItemStyle -> None, Selectable -> 
+    Automatic, Spacings -> Automatic}]]], "Output",
+ CellLabel->"Out[10]=",ExpressionUUID->"7899cb4a-3451-467c-8008-d3595590754e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Gather submission metadata", \
+"Section",ExpressionUUID->"90029098-ecff-4636-acca-99c324816e39"],
+
+Cell[CellGroupData[{
+
+Cell["Set up a Code Golf Programming Language EntityStore", \
+"Subsection",ExpressionUUID->"2b769099-156d-435e-ba2e-3f1766a97c56"],
+
+Cell["\<\
+Create a \[OpenCurlyDoubleQuote]CodeGolfProgrammingLanguage\
+\[CloseCurlyDoubleQuote] EntityStore that extends the built-in ones:\
+\>", "Text",
+ CellChangeTimes->{{3.760968182444358*^9, 
+  3.76096820647176*^9}},ExpressionUUID->"18243d14-da9c-4d3d-b945-\
+0e8f7da2b853"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"codeGolfLanguageStore", "=", 
+   RowBox[{"EntityStore", "[", "\[IndentingNewLine]", 
+    RowBox[{"\"\<CodeGolfProgrammingLanguage\>\"", "\[Rule]", 
+     RowBox[{"<|", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+       "\"\<BaseEntityType\>\"", "\[Rule]", "\"\<ProgrammingLanguage\>\""}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+         RowBox[{
+         "Explicitly", " ", "left", " ", "empty", " ", "to", " ", "avoid", 
+          " ", "pre"}], "-", 
+         RowBox[{
+         "loading", " ", "with", " ", "languages", " ", "that", " ", "never", 
+          " ", "appear", " ", "on", " ", 
+          RowBox[{"CodeGolf", ".", "SE"}]}]}], " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"\"\<Entities\>\"", "\[Rule]", 
+        RowBox[{"<|", "|>"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"\"\<Properties\>\"", "\[Rule]", 
+        RowBox[{"<|", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"\"\<Label\>\"", "\[Rule]", 
+           RowBox[{"<|", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"\"\<Label\>\"", "\[Rule]", "\"\<label\>\""}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"\"\<DefaultFunction\>\"", "\[Rule]", 
+              RowBox[{"Function", "[", 
+               RowBox[{"e", ",", "\[IndentingNewLine]", 
+                RowBox[{"Replace", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"Counts", "[", 
+                   RowBox[{"SanitizeBadWords", "[", 
+                    RowBox[{"e", "[", "\"\<Labels\>\"", "]"}], "]"}], "]"}], 
+                  ",", "\[IndentingNewLine]", 
+                  RowBox[{"{", "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"<|", "|>"}], "\[RuleDelayed]", 
+                    RowBox[{"Replace", "[", 
+                    RowBox[{
+                    RowBox[{"e", "[", "\"\<ProgrammingLanguage\>\"", "]"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"l_Entity", "\[RuleDelayed]", 
+                    RowBox[{"l", "[", "\"\<Label\>\"", "]"}]}], ",", 
+                    RowBox[{"_", "\[RuleDelayed]", 
+                    RowBox[{"CanonicalName", "[", "e", "]"}]}]}], "}"}]}], 
+                    "]"}]}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"a_Association", "\[RuleDelayed]", 
+                    RowBox[{"First", "[", 
+                    RowBox[{"Keys", "@", 
+                    RowBox[{"TakeLargest", "[", 
+                    RowBox[{"a", ",", "1"}], "]"}]}], "]"}]}]}], 
+                   "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", 
+                 "]"}]}], "\[IndentingNewLine]", "]"}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"\"\<FormattingFunction\>\"", "\[Rule]", 
+              RowBox[{"Function", "[", 
+               RowBox[{"x", ",", 
+                RowBox[{"x", "/.", 
+                 RowBox[{"s_String", "\[RuleDelayed]", 
+                  RowBox[{"SanitizeBadWords", "[", "s", "]"}]}]}]}], 
+               "]"}]}]}], "\[IndentingNewLine]", "|>"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"\"\<Labels\>\"", "\[Rule]", 
+           RowBox[{"<|", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"\"\<Label\>\"", "\[Rule]", "\"\<labels\>\""}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"\"\<DefaultFunction\>\"", "\[Rule]", 
+              RowBox[{"Function", "[", 
+               RowBox[{"{", "}"}], "]"}]}]}], "\[IndentingNewLine]", 
+            "|>"}]}]}], "\[IndentingNewLine]", "|>"}]}]}], 
+      "\[IndentingNewLine]", "|>"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EntityUnregister", "/@", 
+   RowBox[{"codeGolfLanguageStore", "[", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"EntityRegister", "[", "codeGolfLanguageStore", "]"}]}], "Input",
+ CellLabel->"In[11]:=",ExpressionUUID->"c3cfc772-8536-4dd0-988d-4a90c052d028"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"CodeGolfProgrammingLanguage\"\>", "}"}]], "Output",
+ CellLabel->"Out[13]=",ExpressionUUID->"181ec3eb-bf39-417f-afb6-5f165613abfc"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Set up a property to gather metadata", \
+"Subsection",ExpressionUUID->"34081643-ccb6-46e7-a766-7fe55cc9d653"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Avoid", " ", "problems", " ", "with", " ", "HTML", " ", "handling"}], " ",
+    "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"EntityProperty", "[", 
+       RowBox[{
+       "\"\<StackExchange.Codegolf:Post\>\"", ",", " ", "\"\<Body\>\""}], 
+       "]"}], "[", "\"\<FormattingFunction\>\"", "]"}], "=", "Identity"}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"EntityProperty", "[", 
+       RowBox[{
+       "\"\<StackExchange.Codegolf:Post\>\"", ",", 
+        "\"\<CodeGolfMetadata\>\""}], "]"}], "[", "\"\<Label\>\"", "]"}], 
+     "=", "\"\<code golf metadata\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"EntityProperty", "[", 
+       RowBox[{
+       "\"\<StackExchange.Codegolf:Post\>\"", ",", 
+        "\"\<CodeGolfMetadata\>\""}], "]"}], "[", "\"\<DefaultFunction\>\"", 
+      "]"}], "=", 
+     RowBox[{"EntityFramework`BatchApplied", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Function", "[", 
+        RowBox[{"entities", ",", 
+         RowBox[{"GetCodeGolfMetadata", "[", "entities", "]"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"BatchSize", "\[Rule]", "7000"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}]}]}]], \
+"Input",ExpressionUUID->"538cdd39-81b9-403c-ab1a-310c3f7069c5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Prefetch all metadata", \
+"Subsection",ExpressionUUID->"a26410ef-dc25-448c-bb09-2e467d21f065"],
+
+Cell["\<\
+Gather and store all of the metadata in the EntityStore for faster lookup.
+Code for this will eventually be provided. It takes a few hours to complete.\
+\>", "Text",ExpressionUUID->"336b8aac-c955-4ab8-a1ce-789c0fde1e1e"],
+
+Cell["\<\
+Note that the programming language EntityStore is not populated yet:\
+\>", "Text",ExpressionUUID->"950d4627-f3f2-45c1-8bf1-01924611e150"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EntityValue", "[", 
+  RowBox[{"\"\<CodeGolfProgrammingLanguage\>\"", ",", "\"\<EntityCount\>\""}],
+   "]"}]], "Input",
+ CellLabel->"In[16]:=",ExpressionUUID->"cb4015f7-de23-4e1e-b558-5f72bd441609"],
+
+Cell[BoxData["0"], "Output",
+ CellLabel->"Out[16]=",ExpressionUUID->"e67950c1-4556-45b1-b65a-17da2254a160"]
+}, Open  ]],
+
+Cell["\<\
+The language store is populated when the metadata is gathered:\
+\>", "Text",ExpressionUUID->"6a0bfb36-0499-41e2-beea-35cbab914116"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"DateString", "[", "\"\<ISODateTime\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PrefetchProperty", "[", 
+   RowBox[{"EntityProperty", "[", 
+    RowBox[{
+    "\"\<StackExchange.Codegolf:Post\>\"", ",", "\"\<CodeGolfMetadata\>\""}], 
+    "]"}], "]"}], "//", "AbsoluteTiming"}]}], "Input",
+ CellChangeTimes->{{3.7798032476960297`*^9, 3.7798032548563166`*^9}, {
+  3.7798032999676795`*^9, 3.7798033474878273`*^9}, {3.7798035614109488`*^9, 
+  3.7798035706043386`*^9}, {3.7801637544280357`*^9, 3.7801637557221265`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"4465c468-a7f2-4ee2-9376-17dede79765f"],
+
+Cell[BoxData["\<\"2019-10-18T12:38:33\"\>"], "Output",
+ CellLabel->"Out[19]=",ExpressionUUID->"bc0635cf-2b10-4131-baad-54fb3f1537d4"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Interpreter","timeout",
+   "\"A network operation for \\!\\(\\*RowBox[{\\\"Interpreter\\\"}]\\) timed \
+out. Please try again later.\"",2,20,1,24997367008966277917,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ ShowCellLabel->True,
+ CellLabel->
+  "During evaluation of \
+In[19]:=",ExpressionUUID->"89c9f743-998c-458f-a2ac-2b469a446082"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"12184.5838394`", ",", 
+   InterpretationBox[
+    RowBox[{
+     TagBox["Success",
+      "SummaryHead"], "[", 
+     DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+      "Ready"}, 
+      TemplateBox[{PaneSelectorBox[{False -> GridBox[{{
+              PaneBox[
+               ButtonBox[
+                DynamicBox[
+                 FEPrivate`FrontEndResource[
+                 "FEBitmaps", "SquarePlusIconMedium"]], 
+                ButtonFunction :> (Typeset`open$$ = True), Appearance -> None,
+                 Evaluator -> Automatic, Method -> "Preemptive"], 
+               Alignment -> {Center, Center}, ImageSize -> 
+               Dynamic[{
+                 Automatic, 
+                  3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                   Magnification])}]], 
+              FrameBox[
+               StyleBox["\"\[Checkmark]\"", 
+                Directive[
+                 RGBColor[
+                 0.3607843137254902, 0.596078431372549, 0.3803921568627451], 
+                 25], StripOnInput -> False], ContentPadding -> False, 
+               FrameStyle -> None, FrameMargins -> {{0, 0}, {0, 0}}, 
+               StripOnInput -> False], 
+              GridBox[{{
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Message\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox["\"Prefetch successful.\"", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Domain\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox[
+                   "\"StackExchange.Codegolf:Post\"", "SummaryItem"]}]}}, 
+               GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+               False, GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {
+                "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+               BaseStyle -> {
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+            GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
+            GridBoxItemSize -> {
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+            BaselinePosition -> {1, 1}], True -> GridBox[{{
+              PaneBox[
+               ButtonBox[
+                DynamicBox[
+                 FEPrivate`FrontEndResource[
+                 "FEBitmaps", "SquareMinusIconMedium"]], 
+                ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                None, Evaluator -> Automatic, Method -> "Preemptive"], 
+               Alignment -> {Center, Center}, ImageSize -> 
+               Dynamic[{
+                 Automatic, 
+                  3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                   Magnification])}]], 
+              FrameBox[
+               StyleBox["\"\[Checkmark]\"", 
+                Directive[
+                 RGBColor[
+                 0.3607843137254902, 0.596078431372549, 0.3803921568627451], 
+                 25], StripOnInput -> False], ContentPadding -> False, 
+               FrameStyle -> None, FrameMargins -> {{0, 0}, {0, 0}}, 
+               StripOnInput -> False], 
+              GridBox[{{
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Message\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox["\"Prefetch successful.\"", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Domain\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox[
+                   "\"StackExchange.Codegolf:Post\"", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    
+                    TemplateBox[{"\"ValuesProcessed\"", "\": \""}, 
+                    "RowDefault"], "SummaryItemAnnotation"], 
+                   "\[InvisibleSpace]", 
+                   TagBox["154104", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"ValuesCached\"", "\": \""}, "RowDefault"],
+                     "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox["154104", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox[
+                    TemplateBox[{"\"Tag\"", "\": \""}, "RowDefault"], 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                   TagBox["\"PrefetchProperty\"", "SummaryItem"]}]}}, 
+               GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+               False, GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {
+                "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+               BaseStyle -> {
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+            GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
+            GridBoxItemSize -> {
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+            BaselinePosition -> {1, 1}]}, 
+         Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+       "SummaryPanel"],
+      DynamicModuleValues:>{}], "]"}],
+    Success["PrefetchProperty", 
+     Association[
+     "MessageTemplate" -> "Prefetch successful.", "Domain" -> 
+      "StackExchange.Codegolf:Post", "ValuesProcessed" -> 154104, 
+      "ValuesCached" -> 154104]],
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False]}], "}"}]], "Output",
+ CellLabel->"Out[20]=",ExpressionUUID->"170c03ba-0080-450e-b265-5ed94d96363e"]
+}, Open  ]],
+
+Cell["Now the programming language EntityStore is populated:", \
+"Text",ExpressionUUID->"ba8dea42-e4b5-497d-8203-ba075c66c376"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EntityValue", "[", 
+  RowBox[{"\"\<CodeGolfProgrammingLanguage\>\"", ",", "\"\<EntityCount\>\""}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.780155609718343*^9, 3.780155657330779*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"fbbd8e1f-c2c2-45e3-a02e-5b8b4054e47a"],
+
+Cell[BoxData["9637"], "Output",
+ CellLabel->"Out[21]=",ExpressionUUID->"ff7101ee-515b-47e2-bbde-d35995539e0f"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Export EntityStores with gathered metadata", \
+"Section",ExpressionUUID->"9ca5ff77-9a24-4831-8423-268f097ff26b"],
+
+Cell["Export the results for future use in ProcessMetadata.nb:", \
+"Text",ExpressionUUID->"6b5eba87-2cac-4b42-9578-10f3b87f6f36"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"\"\<codegolf.stackexchange.com_WithMetadata_\>\"", "<>", 
+    RowBox[{"StringReplace", "[", 
+     RowBox[{
+      RowBox[{"DateString", "[", "\"\<ISODateTime\>\"", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<:\>\"", "\[Rule]", "\"\<-\>\""}], ",", 
+        RowBox[{"\"\<T\>\"", "\[Rule]", "\"\<_\>\""}]}], "}"}]}], "]"}], 
+    "<>", "\"\<.mx\>\""}], ",", 
+   RowBox[{
+    RowBox[{"Entity", "[", "\"\<StackExchange.Codegolf:Post\>\"", "]"}], "[", 
+    "\"\<EntityStore\>\"", "]"}]}], "]"}]}], "Input",
+ CellLabel->"In[22]:=",ExpressionUUID->"be77eeaa-31c7-4b5d-9e11-c85ab0fc03b0"],
+
+Cell[BoxData["\<\"codegolf.stackexchange.com_WithMetadata_2019-10-18_16-08-14.\
+mx\"\>"], "Output",
+ CellLabel->"Out[23]=",ExpressionUUID->"309cc4fe-9867-4dd4-99ea-cd56281f9334"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"\"\<CodeGolfProgrammingLanguage_\>\"", "<>", 
+    RowBox[{"StringReplace", "[", 
+     RowBox[{
+      RowBox[{"DateString", "[", "\"\<ISODateTime\>\"", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\"\<:\>\"", "\[Rule]", "\"\<-\>\""}], ",", 
+        RowBox[{"\"\<T\>\"", "\[Rule]", "\"\<_\>\""}]}], "}"}]}], "]"}], 
+    "<>", "\"\<.mx\>\""}], ",", 
+   RowBox[{
+    RowBox[{"Entity", "[", "\"\<CodeGolfProgrammingLanguage\>\"", "]"}], "[", 
+    "\"\<EntityStore\>\"", "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.779812070010163*^9, 3.77981208314629*^9}, {
+  3.7798121250415883`*^9, 3.779812125177219*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"a4b3ad46-5b60-4904-a0cf-911e2ed77b15"],
+
+Cell[BoxData["\<\"CodeGolfProgrammingLanguage_2019-10-18_16-08-59.mx\"\>"], \
+"Output",
+ CellLabel->"Out[25]=",ExpressionUUID->"0a3d5d58-6a2a-4d4f-b48f-bf8c0b2ea257"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+
