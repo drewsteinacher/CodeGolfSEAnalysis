@@ -20,8 +20,7 @@ ExtractLanguage;
 
 ExtractReportedSize;
 ParseReportedSize;
-ExtractReportedSizeForPostHistory;
-ExtractReportedSizeMarkdown;
+GetCodeGolfMetadataMarkdown;
 
 ProcessCode;
 
@@ -30,7 +29,6 @@ Begin["`Private`"];
 
 $UnitToSpellings = <|
 	
-	(* TODO: Decide if characters should be separated from bytes? *)
 	"Bytes" -> {"bytes", "bytes", "b"},
 	"Bits" -> {"bits", "bit"},
 	
@@ -102,6 +100,107 @@ processMetadata[a_Association] := Join[
 	ProcessCode[Lookup[a, "Code"]]
 ];
 
+
+GetHistoricalCodeGolfMetadata[post_Entity] := First @ GetHistoricalCodeGolfMetadata[{post}];
+GetHistoricalCodeGolfMetadata[posts: {__Entity}] := iGetHistoricalCodeGolfMetadata[
+	EntityValue[posts, "PostHistory", "EntityAssociation"]
+];
+
+
+htmlQ = StringStartsQ["<h" ~~ DigitCharacter ~~ ">"];
+markdownQ = StringQ;
+
+ClearAll[iGetHistoricalCodeGolfMetadata];
+iGetHistoricalCodeGolfMetadata[postToPostHistory_Association] := Module[
+	{allPostHistory, allBodyEditHistories, dates, texts, metadata, editHistoryToMetadata},
+	
+	allPostHistory = Cases[Values[postToPostHistory], Entity[_String, _String], Infinity];
+	
+	(* Keep only PostHistory entities for initial/edit body *)
+	allBodyEditHistories = Pick[
+		allPostHistory,
+		MatchQ[Entity["StackExchange:PostHistoryType", "2"] | Entity["StackExchange:PostHistoryType", "5"]] /@ EntityValue[allPostHistory, "PostHistoryType"]
+	];
+	
+	{dates, texts} = Transpose @ EntityValue[allBodyEditHistories, {"CreationDate", "Text"}];
+	
+	(* Efficiently extract metadata *)
+	metadata = Fold[
+		SubsetMap[#2[[2]], #1, Position[#1, _String?(#2[[1]])]] &,
+		texts,
+		{htmlQ -> GetCodeGolfMetadata, markdownQ -> GetCodeGolfMetadataMarkdown}
+	];
+	
+	(* TODO: Drop the texts? Useful for troubleshooting for now though... *)
+	metadata = Join[#, <|"Date" -> #2, "Text" -> #3|>]& @@@ Transpose[{metadata, dates, texts}];
+	
+	(* Process the metadata in the same way as non-history post metadata *)
+	editHistoryToMetadata = processMetadata /@ AssociationThread[allBodyEditHistories, metadata];
+	
+	(* Re-attach to posts to maintain structure and make EventSeries *)
+	RightComposition[
+		Lookup[editHistoryToMetadata, #, <||>]&,
+		Map[{#["Date"], #}&],
+		Cases[{_DateObject, _Association}],
+		Replace[
+			{
+				{} -> Missing[],
+				ts_List :> EventSeries[ts]
+			}
+		]
+	] /@ Values[postToPostHistory]
+];
+
+$CodeBlockLineSeparator = "\r\n";
+$CodeBlockIndent = "    ";
+$CodeBlockLineStart = ($CodeBlockLineSeparator ~~ $CodeBlockIndent);
+
+GetCodeGolfMetadataMarkdown[texts_List] := GetCodeGolfMetadataMarkdown /@ texts;
+GetCodeGolfMetadataMarkdown[text_String] := With[
+	{
+		titleString = First[
+			StringCases[
+				text,
+				Shortest[StartOfLine | StartOfString ~~ ("###" | "##" | "#") ~~ (Whitespace | "") ~~ title__ ~~ EndOfLine] :> title,
+				1
+			],
+			First[
+				StringCases[
+					text,
+					Shortest[
+						StartOfString ~~ title__ ~~ (Whitespace | "") ~~ "\n" ~~ ("-" ..) ~~ Whitespace | "" ~~ EndOfLine
+					] /; StringFreeQ[title, "\n"] :> StringTrim[title, Whitespace],
+					1
+				],
+				Missing["NotFound"]
+			]
+		],
+		codeBlocks =
+			StringCases[
+				text,
+				StringExpression[
+					$CodeBlockLineSeparator,
+					lines : Shortest[$CodeBlockLineStart, __] ..,
+					$CodeBlockLineSeparator
+				] :> StringReplace[lines, $CodeBlockLineStart -> "\n"]
+			]
+	},
+	<|
+		"Title" -> Replace[
+			titleString,
+			s_String :> {
+				StringReplace[StringTrim @ s,
+					{
+						Shortest["<" ~~ tag:"strike" | "del" | "s" ~~ ">" ~~ __ ~~ "</" ~~ tag__ ~~ ">"] -> "",
+						Shortest["<" ~~ ("/" | "") ~~ __ ~~ ">"] -> ""
+					}
+				]
+			}
+		],
+		"Code" -> codeBlocks,
+		"Format" -> "Markdown"
+	|>
+];
 
 End[];
 

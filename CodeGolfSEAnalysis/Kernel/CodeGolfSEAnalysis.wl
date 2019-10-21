@@ -6,6 +6,7 @@ SanitizeBadWords;
 MyInterpreter;
 
 GetCodeGolfMetadata;
+GetHistoricalCodeGolfMetadata;
 
 Begin["`Private`"];
 

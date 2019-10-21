@@ -49,42 +49,6 @@ ParseReportedSize[s_String] := First[
 ParseReportedSize[___] := Missing["Unknown"];
 
 
-htmlQ = StringStartsQ["<h" ~~ DigitCharacter ~~ ">"];
-markdownQ = StringStartsQ["#"];
-
-(* TODO: Extend to get all usual metadata for all post history entities? *)
-ExtractReportedSizeForPostHistory[texts_List] := With[
-	{
-		textToMetadata = Join[
-			AssociationThread[# -> Lookup[GetCodeGolfMetadata[#], "ReportedSize", Missing["NotFound"]]] &[Pick[texts, htmlQ[texts]]],
-			AssociationMap[ExtractReportedSizeMarkdown, Pick[texts, markdownQ[texts]]]
-		]
-	},
-	Lookup[textToMetadata, texts]
-];
-
-
-ExtractReportedSizeMarkdown[text_String] := With[
-	{
-		titleString = First[
-			StringCases[
-				text,
-				Shortest[StartOfLine | StartOfString ~~ ("###" | "##" | "#") ~~ (Whitespace | "") ~~ title__ ~~ EndOfLine] :> title,
-				1
-			],
-			Missing["NotFound"]
-		]
-	},
-	Replace[
-		titleString,
-		{
-			title_String :> ExtractReportedSize[title],
-			m_Missing :> m
-		}
-	]
-];
-
-
 End[];
 
 EndPackage[];
