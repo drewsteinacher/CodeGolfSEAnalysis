@@ -1,0 +1,592 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24378,        584]
+NotebookOptionsPosition[     18416,        494]
+NotebookOutlinePosition[     18756,        509]
+CellTagsIndexPosition[     18713,        506]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Load Paclet", "Section",ExpressionUUID->"95a0b2ab-eca3-448c-b522-a97d48331530"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"PacletDirectoryAdd", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Get", "[", "\"\<CodeGolfSEAnalysis`\>\"", "]"}]}], "Input",
+ CellLabel->"In[38]:=",ExpressionUUID->"2ae25e0e-87f6-483a-9631-81421d7ea462"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Generate EntityStore", "Section",ExpressionUUID->"86e3b28c-4722-4234-bc46-5f7e9644dde5"],
+
+Cell[CellGroupData[{
+
+Cell["Generate EntityStore from Archive.org XML snapshot", "Subsection",ExpressionUUID->"f7475050-93f8-413d-880f-5d4486e744d7"],
+
+Cell["Code and procedures for this will be released in the future.", "Text",ExpressionUUID->"775da1d9-a742-4099-bad5-33582a020992"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"store", "=", 
+    RowBox[{"StackExchange2EntityStore", "[", 
+     RowBox[{"\"\<codegolf.stackexchange.com\>\"", ",", 
+      RowBox[{"Verbose", "\[Rule]", "True"}]}], "]"}]}], ";"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"EntityRegister", "[", "store", "]"}]}], "Input",
+ CellChangeTimes->{{3.7608909800976763`*^9, 3.760890986245291*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"5030069c-9cd8-4921-8018-88194ca90acd"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"User\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "User", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033325236009*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"3e837158-c60f-495d-9489-62304a13ec23"],
+
+Cell[BoxData["\<\"\\tImporting codegolf.stackexchange.com\\\\Users.xml\
+\[Ellipsis] (31.149 MB)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790333256489925`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"d4cffe5f-6a6f-42b1-a426-f868ba69526c"],
+
+Cell[BoxData["\<\"\\tDone importing Users.xml after 25.4 seconds (used 142. \
+Mb)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790333510996623`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"4400f117-6c62-4d0c-9f58-32975d536349"],
+
+Cell[BoxData["\<\"Done with User data after 33.1 seconds (used 283. \
+Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790333583379*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"18aadc44-00bd-4dae-b6f0-daad77d99c9b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"Badge\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "Badge", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033358340892*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"724d2936-e3e4-466d-9beb-23693665939a"],
+
+Cell[BoxData["\<\"\\tImporting codegolf.stackexchange.com\\\\Badges.xml\
+\[Ellipsis] (17.5627 MB)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033358343884*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"67f65824-ed29-4288-80a2-fc508bf10925"],
+
+Cell[BoxData["\<\"\\tDone importing Badges.xml after 29.4 seconds (used 167. \
+Mb)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033387708028*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"0600e4b7-5f91-4fac-99e0-a6a298937b42"],
+
+Cell[BoxData["\<\"Done with Badge data after 39.2 seconds (used 290. \
+Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790333975423093`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"0a2f0f6d-68e7-4df6-933b-b25c9443b70e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"Comment\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "Comment", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790333975453014`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"d12b8b82-ba76-4f24-a825-8330264508b9"],
+
+Cell[BoxData["\<\"\\tImporting codegolf.stackexchange.com\\\\Comments.xml\
+\[Ellipsis] (69.9878 MB)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790333975492897`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"511272fe-b6d2-4e2f-9246-149a42b90a35"],
+
+Cell[BoxData["\<\"\\tDone importing Comments.xml after 60.3 seconds (used \
+346. Mb)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790334578904247`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"05b360f9-f725-4979-8094-4d2c42e5d12a"],
+
+Cell[BoxData["\<\"Done with Comment data after 76.9 seconds (used 718. Mb).\"\
+\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790334744033337`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"d6acdc24-a06d-429b-b571-708a942060b4"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"Post\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "Post", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033474407324*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"94865e07-0ea8-40ae-98c2-242829da43ed"],
+
+Cell[BoxData["\<\"\\tImporting codegolf.stackexchange.com\\\\Posts.xml\
+\[Ellipsis] (305.397 MB)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033474411313*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"afde95dd-7b06-4a36-9351-edb29d58ad3c"],
+
+Cell[BoxData["\<\"\\tDone importing Posts.xml after 87.3 seconds (used 532. \
+Mb)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033561660365*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"18e3bfe5-cbde-46e9-9d6d-04100fc8fc43"],
+
+Cell[BoxData["\<\"\\tImporting codegolf.stackexchange.com\\\\PostLinks.xml\
+\[Ellipsis] (1.21976 MB)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033563757799*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"0ce27559-a0e3-427f-a5ca-f1e4f01a2b89"],
+
+Cell[BoxData["\<\"\\tDone importing PostLinks.xml after 1.82 seconds (used \
+19.9 Mb)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790335655779285`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"eaad9aeb-daf3-4e59-9c13-a0f62af49c31"],
+
+Cell[BoxData["\<\"Done with Post data after 120. seconds (used 1380. \
+Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033594636861*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"882cd845-b6a9-44ef-9187-3b7156dc7718"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"PostType\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "PostType", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033594640849*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"d9a73965-4a05-4011-986a-c86fd64824a3"],
+
+Cell[BoxData["\<\"Done with PostType data after 0.0000625 seconds (used \
+0.00716 Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790335946438417`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"5767c19f-a33b-4990-b5a1-a5a2bcf517a8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"Vote\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "Vote", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790335946468334`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"0c022145-878e-459f-b27a-59a5995624c1"],
+
+Cell[BoxData["\<\"\\tImporting codegolf.stackexchange.com\\\\Votes.xml\
+\[Ellipsis] (86.6823 MB)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790335946498256`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"2bb0d02d-37e3-4114-ad33-6ffceb38c38d"],
+
+Cell[BoxData["\<\"\\tDone importing Votes.xml after 121. seconds (used 714. \
+Mb)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790337151729813`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"ee2eca29-1df6-4edf-8d8a-4e22dfb82c58"],
+
+Cell[BoxData["\<\"Done with Vote data after 162. seconds (used 1470. \
+Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790337561534896`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"5aef0bbf-7498-4ebf-bfc6-6cefdc8c6b63"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"VoteType\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "VoteType", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790337561564813`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"cd931999-5795-4e0d-b651-bc9d8f42de3c"],
+
+Cell[BoxData["\<\"Done with VoteType data after 0.0000453 seconds (used \
+0.00849 Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790337561604724`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"d80b93e6-63b7-4a9f-a447-e78d977c89d7"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"PostHistory\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "PostHistory", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033756163464*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"c94476d9-a362-48d6-b64a-bfb38a9d802a"],
+
+Cell[BoxData["\<\"\\tImporting codegolf.stackexchange.com\\\\PostHistory.xml\
+\[Ellipsis] (0.870776 GB)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790337561684504`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"8f8ec4c0-f1be-4563-8605-65baed07fd76"],
+
+Cell[BoxData["\<\"\\tDone importing PostHistory.xml after 210. seconds (used \
+1320. Mb)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790339658740263`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"89e08735-810d-4378-88f8-46039aab7f6b"],
+
+Cell[BoxData["\<\"Done with PostHistory data after 232. seconds (used 1940. \
+Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790339882141027`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"59477b26-28d4-4366-95f1-753a28bb7d6c"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", 
+   "\[InvisibleSpace]", "\<\"PostHistoryType\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "PostHistoryType", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790339882170944`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"eb716daf-7fd9-4221-ada0-2a7febb1d947"],
+
+Cell[BoxData["\<\"Done with PostHistoryType data after 0.0000808 seconds \
+(used 0.0145 Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790339882210846`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"576aae9e-64d1-40f0-9230-afa06311c327"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"CloseReason\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "CloseReason", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790339882240763`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"cf723bb3-a1e0-452c-b420-9ee1ecb63eb0"],
+
+Cell[BoxData["\<\"Done with CloseReason data after 0.0000331 seconds (used \
+0.00574 Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033988227068*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"848b7de3-e24f-47da-8d84-9818f284c274"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Processing \"\>", "\[InvisibleSpace]", "\<\"Tag\"\>", 
+   "\[InvisibleSpace]", "\<\" data...\"\>"}],
+  SequenceForm["Processing ", "Tag", " data..."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033988231057*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"6cad3c73-39fd-45c5-a803-1422d22bcbf9"],
+
+Cell[BoxData["\<\"\\tImporting codegolf.stackexchange.com\\\\Tags.xml\
+\[Ellipsis] (25.366 kB)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033988234049*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"8a45b27a-40f6-4c42-8843-62a57ad9215a"],
+
+Cell[BoxData["\<\"\\tDone importing Tags.xml after 0.0494 seconds (used 0.56 \
+Mb)\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.7790339883068542`*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"59102770-f581-40cd-804d-8bc20b7d36e5"],
+
+Cell[BoxData["\<\"Done with Tag data after 0.516 seconds (used 2.01 \
+Mb).\"\>"], "Print",
+ CellChangeTimes->{3.7608910431159773`*^9, 3.779033988731228*^9},
+ CellLabel->
+  "During evaluation of \
+In[3]:=",ExpressionUUID->"67ec9f72-e17f-41f0-abbd-2f1bd019edd3"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"740.7828886`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{3.760891795397198*^9, 3.7790340625955086`*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"4286753a-bc5a-4fb5-bf7d-2793676061cb"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"StackExchange.Codegolf:User\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Badge\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Comment\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Post\"\>", 
+   ",", "\<\"StackExchange:PostType\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Vote\"\>", 
+   ",", "\<\"StackExchange:VoteType\"\>", 
+   ",", "\<\"StackExchange.Codegolf:PostHistory\"\>", 
+   ",", "\<\"StackExchange:PostHistoryType\"\>", 
+   ",", "\<\"StackExchange:CloseReason\"\>", 
+   ",", "\<\"StackExchange.Codegolf:Tag\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.760891795397198*^9, 3.779034062611498*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"cbb13ccc-8f8d-4101-9d52-e54508f81b79"]
+}, Open  ]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Export for future use", "Subsection",ExpressionUUID->"27533b20-8a45-4d28-88f1-d99b06515e91"],
+
+Cell["\<\
+It\[CloseCurlyQuote]s much faster to load an MX file than it is to regenerate \
+each time:\
+\>", "Text",ExpressionUUID->"5393bce8-e30e-43da-8563-319d8de20435"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<codegolf.stackexchange.com.mx\>\"", ",", "store"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.7608910079244585`*^9, 3.760891039800646*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"f860ea7d-d858-408c-be1c-f75a8670e7cc"],
+
+Cell[BoxData["\<\"codegolf.stackexchange.com.mx\"\>"], "Output",
+ CellChangeTimes->{3.760891905688226*^9, 3.779034100816479*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"5b92f61b-5e1d-43e1-92f3-088adcf37091"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Compress and copy to Wolfram Cloud", "Subsection",ExpressionUUID->"2c4b2d8d-93b0-4a83-8854-3cea3f191f12"],
+
+Cell["\<\
+The MX file is larger than 1 GB, so it needs to be compressed so it can be \
+more easily shared with others:\
+\>", "Text",ExpressionUUID->"cb789518-532e-4cf1-8a30-5183e445eca7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"CreateArchive", "[", "\"\<codegolf.stackexchange.com.mx\>\"", 
+  "]"}]}], "Input",ExpressionUUID->"f79fa29e-785c-46d1-85e6-cd43f658a84f"],
+
+Cell["Upload to the Wolfram Cloud so others can use it:", "Text",ExpressionUUID->"89b10ec5-58a0-4eef-94bb-da57c668f917"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"CopyFile", "[", "\[IndentingNewLine]", 
+  RowBox[{"\"\<codegolf.stackexchange.com.mx.zip\>\"", ",", 
+   RowBox[{"CloudObject", "[", 
+    RowBox[{
+    "\"\<StackExchange2EntityStore/codegolf.stackexchange.com.mx.zip\>\"", 
+     ",", 
+     RowBox[{"Permissions", "\[Rule]", "\"\<Public\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"OverwriteTarget", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellLabel->"In[1]:=",ExpressionUUID->"20c699c4-f917-44c7-aaf2-79abba45e0de"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TemplateBox[{
+    "\"https://www.wolframcloud.com/obj/andrews/StackExchange2EntityStore/\
+codegolf.stackexchange.com.mx.zip\"",
+     "https://www.wolframcloud.com/obj/andrews/StackExchange2EntityStore/\
+codegolf.stackexchange.com.mx.zip"},
+    "HyperlinkURL"], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/obj/andrews/StackExchange2EntityStore/\
+codegolf.stackexchange.com.mx.zip"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.760908685056508*^9, 3.780839977957592*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"712dfc38-622c-45e4-88f5-cdcceb00b3a0"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Download from Wolfram Cloud", "Subsection",ExpressionUUID->"6e345888-0dbf-4fa5-b97f-3379c1ae83bc"],
+
+Cell["\<\
+Simply visit the URL in a browser to download the file. Extract the MX file \
+so it can be loaded.\
+\>", "Text",ExpressionUUID->"3a15f240-37d6-4847-ae09-8e26236c629a"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 85, 0, 67, "Section",ExpressionUUID->"95a0b2ab-eca3-448c-b522-a97d48331530"],
+Cell[668, 24, 296, 6, 48, "Input",ExpressionUUID->"2ae25e0e-87f6-483a-9631-81421d7ea462"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1001, 35, 94, 0, 67, "Section",ExpressionUUID->"86e3b28c-4722-4234-bc46-5f7e9644dde5"],
+Cell[CellGroupData[{
+Cell[1120, 39, 127, 0, 53, "Subsection",ExpressionUUID->"f7475050-93f8-413d-880f-5d4486e744d7"],
+Cell[1250, 41, 131, 0, 34, "Text",ExpressionUUID->"775da1d9-a742-4099-bad5-33582a020992"],
+Cell[CellGroupData[{
+Cell[1406, 45, 618, 14, 67, "Input",ExpressionUUID->"5030069c-9cd8-4921-8018-88194ca90acd"],
+Cell[CellGroupData[{
+Cell[2049, 63, 401, 9, 22, "Print",ExpressionUUID->"3e837158-c60f-495d-9489-62304a13ec23"],
+Cell[2453, 74, 283, 5, 22, "Print",ExpressionUUID->"d4cffe5f-6a6f-42b1-a426-f868ba69526c"],
+Cell[2739, 81, 269, 5, 22, "Print",ExpressionUUID->"4400f117-6c62-4d0c-9f58-32975d536349"],
+Cell[3011, 88, 258, 5, 22, "Print",ExpressionUUID->"18aadc44-00bd-4dae-b6f0-daad77d99c9b"],
+Cell[3272, 95, 403, 9, 22, "Print",ExpressionUUID->"724d2936-e3e4-466d-9beb-23693665939a"],
+Cell[3678, 106, 283, 5, 22, "Print",ExpressionUUID->"67f65824-ed29-4288-80a2-fc508bf10925"],
+Cell[3964, 113, 268, 5, 22, "Print",ExpressionUUID->"0600e4b7-5f91-4fac-99e0-a6a298937b42"],
+Cell[4235, 120, 263, 5, 22, "Print",ExpressionUUID->"0a2f0f6d-68e7-4df6-933b-b25c9443b70e"],
+Cell[4501, 127, 409, 9, 22, "Print",ExpressionUUID->"d12b8b82-ba76-4f24-a825-8330264508b9"],
+Cell[4913, 138, 287, 5, 22, "Print",ExpressionUUID->"511272fe-b6d2-4e2f-9246-149a42b90a35"],
+Cell[5203, 145, 272, 5, 22, "Print",ExpressionUUID->"05b360f9-f725-4979-8094-4d2c42e5d12a"],
+Cell[5478, 152, 265, 5, 22, "Print",ExpressionUUID->"d6acdc24-a06d-429b-b571-708a942060b4"],
+Cell[5746, 159, 401, 9, 22, "Print",ExpressionUUID->"94865e07-0ea8-40ae-98c2-242829da43ed"],
+Cell[6150, 170, 282, 5, 22, "Print",ExpressionUUID->"afde95dd-7b06-4a36-9351-edb29d58ad3c"],
+Cell[6435, 177, 267, 5, 22, "Print",ExpressionUUID->"18e3bfe5-cbde-46e9-9d6d-04100fc8fc43"],
+Cell[6705, 184, 286, 5, 22, "Print",ExpressionUUID->"0ce27559-a0e3-427f-a5ca-f1e4f01a2b89"],
+Cell[6994, 191, 273, 5, 22, "Print",ExpressionUUID->"eaad9aeb-daf3-4e59-9c13-a0f62af49c31"],
+Cell[7270, 198, 261, 5, 22, "Print",ExpressionUUID->"882cd845-b6a9-44ef-9187-3b7156dc7718"],
+Cell[7534, 205, 409, 9, 22, "Print",ExpressionUUID->"d9a73965-4a05-4011-986a-c86fd64824a3"],
+Cell[7946, 216, 274, 5, 22, "Print",ExpressionUUID->"5767c19f-a33b-4990-b5a1-a5a2bcf517a8"],
+Cell[8223, 223, 403, 9, 22, "Print",ExpressionUUID->"0c022145-878e-459f-b27a-59a5995624c1"],
+Cell[8629, 234, 284, 5, 22, "Print",ExpressionUUID->"2bb0d02d-37e3-4114-ad33-6ffceb38c38d"],
+Cell[8916, 241, 269, 5, 22, "Print",ExpressionUUID->"ee2eca29-1df6-4edf-8d8a-4e22dfb82c58"],
+Cell[9188, 248, 263, 5, 22, "Print",ExpressionUUID->"5aef0bbf-7498-4ebf-bfc6-6cefdc8c6b63"],
+Cell[9454, 255, 411, 9, 22, "Print",ExpressionUUID->"cd931999-5795-4e0d-b651-bc9d8f42de3c"],
+Cell[9868, 266, 274, 5, 22, "Print",ExpressionUUID->"d80b93e6-63b7-4a9f-a447-e78d977c89d7"],
+Cell[10145, 273, 415, 9, 22, "Print",ExpressionUUID->"c94476d9-a362-48d6-b64a-bfb38a9d802a"],
+Cell[10563, 284, 291, 5, 22, "Print",ExpressionUUID->"8f8ec4c0-f1be-4563-8605-65baed07fd76"],
+Cell[10857, 291, 276, 5, 22, "Print",ExpressionUUID->"89e08735-810d-4378-88f8-46039aab7f6b"],
+Cell[11136, 298, 270, 5, 22, "Print",ExpressionUUID->"59477b26-28d4-4366-95f1-753a28bb7d6c"],
+Cell[11409, 305, 429, 10, 22, "Print",ExpressionUUID->"eb716daf-7fd9-4221-ada0-2a7febb1d947"],
+Cell[11841, 317, 280, 5, 22, "Print",ExpressionUUID->"576aae9e-64d1-40f0-9230-afa06311c327"],
+Cell[12124, 324, 417, 9, 22, "Print",ExpressionUUID->"cf723bb3-a1e0-452c-b420-9ee1ecb63eb0"],
+Cell[12544, 335, 275, 5, 22, "Print",ExpressionUUID->"848b7de3-e24f-47da-8d84-9818f284c274"],
+Cell[12822, 342, 399, 9, 22, "Print",ExpressionUUID->"6cad3c73-39fd-45c5-a803-1422d22bcbf9"],
+Cell[13224, 353, 280, 5, 22, "Print",ExpressionUUID->"8a45b27a-40f6-4c42-8843-62a57ad9215a"],
+Cell[13507, 360, 270, 5, 22, "Print",ExpressionUUID->"59102770-f581-40cd-804d-8bc20b7d36e5"],
+Cell[13780, 367, 260, 5, 22, "Print",ExpressionUUID->"67ec9f72-e17f-41f0-abbd-2f1bd019edd3"]
+}, Open  ]],
+Cell[14055, 375, 231, 4, 32, "Output",ExpressionUUID->"4286753a-bc5a-4fb5-bf7d-2793676061cb"],
+Cell[14289, 381, 719, 14, 90, "Output",ExpressionUUID->"cbb13ccc-8f8d-4101-9d52-e54508f81b79"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[15057, 401, 98, 0, 37, "Subsection",ExpressionUUID->"27533b20-8a45-4d28-88f1-d99b06515e91"],
+Cell[15158, 403, 169, 3, 34, "Text",ExpressionUUID->"5393bce8-e30e-43da-8563-319d8de20435"],
+Cell[CellGroupData[{
+Cell[15352, 410, 400, 9, 48, "Input",ExpressionUUID->"f860ea7d-d858-408c-be1c-f75a8670e7cc"],
+Cell[15755, 421, 206, 2, 32, "Output",ExpressionUUID->"5b92f61b-5e1d-43e1-92f3-088adcf37091"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16010, 429, 111, 0, 53, "Subsection",ExpressionUUID->"2c4b2d8d-93b0-4a83-8854-3cea3f191f12"],
+Cell[16124, 431, 187, 3, 34, "Text",ExpressionUUID->"cb789518-532e-4cf1-8a30-5183e445eca7"],
+Cell[16314, 436, 289, 6, 48, "Input",ExpressionUUID->"f79fa29e-785c-46d1-85e6-cd43f658a84f"],
+Cell[16606, 444, 120, 0, 34, "Text",ExpressionUUID->"89b10ec5-58a0-4eef-94bb-da57c668f917"],
+Cell[CellGroupData[{
+Cell[16751, 448, 660, 15, 124, "Input",ExpressionUUID->"20c699c4-f917-44c7-aaf2-79abba45e0de"],
+Cell[17414, 465, 641, 14, 35, "Output",ExpressionUUID->"712dfc38-622c-45e4-88f5-cdcceb00b3a0"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18104, 485, 104, 0, 53, "Subsection",ExpressionUUID->"6e345888-0dbf-4fa5-b97f-3379c1ae83bc"],
+Cell[18211, 487, 177, 3, 34, "Text",ExpressionUUID->"3a15f240-37d6-4847-ae09-8e26236c629a"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
