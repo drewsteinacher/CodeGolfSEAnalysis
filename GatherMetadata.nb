@@ -62,7 +62,7 @@ Cell[BoxData[
    ",", "\<\"StackExchange:PostHistoryType\"\>", 
    ",", "\<\"StackExchange:CloseReason\"\>", 
    ",", "\<\"StackExchange.Codegolf:Tag\"\>"}], "}"}]], "Output",
- CellLabel->"Out[4]=",ExpressionUUID->"ce2f47a8-87c8-4db1-a953-a0cd0009fa86"]
+ CellLabel->"Out[4]=",ExpressionUUID->"89c005d4-6290-407b-96a7-93c92f9cfb8f"]
 }, Open  ]]
 }, Open  ]],
 
@@ -201,7 +201,7 @@ Cell[BoxData[
     Dividers -> {}, Editable -> Automatic, Frame -> None, FrameStyle -> 
     Automatic, ItemSize -> Automatic, ItemStyle -> None, Selectable -> 
     Automatic, Spacings -> Automatic}]]], "Output",
- CellLabel->"Out[10]=",ExpressionUUID->"7899cb4a-3451-467c-8008-d3595590754e"]
+ CellLabel->"Out[10]=",ExpressionUUID->"3943a324-f75e-43ba-95dc-b5050f74f1db"]
 }, Open  ]]
 }, Open  ]],
 
@@ -315,7 +315,7 @@ Cell[BoxData[{
 
 Cell[BoxData[
  RowBox[{"{", "\<\"CodeGolfProgrammingLanguage\"\>", "}"}]], "Output",
- CellLabel->"Out[13]=",ExpressionUUID->"181ec3eb-bf39-417f-afb6-5f165613abfc"]
+ CellLabel->"Out[13]=",ExpressionUUID->"1125da85-1d68-46c5-857e-d700d6c09498"]
 }, Open  ]]
 }, Open  ]],
 
@@ -362,8 +362,8 @@ Cell[BoxData[
          RowBox[{"GetCodeGolfMetadata", "[", "entities", "]"}]}], "]"}], ",", 
        "\[IndentingNewLine]", 
        RowBox[{"BatchSize", "\[Rule]", "7000"}]}], "\[IndentingNewLine]", 
-      "]"}]}], ";"}]}]}]], \
-"Input",ExpressionUUID->"538cdd39-81b9-403c-ab1a-310c3f7069c5"]
+      "]"}]}], ";"}]}]}]], "Input",
+ CellLabel->"In[14]:=",ExpressionUUID->"538cdd39-81b9-403c-ab1a-310c3f7069c5"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -386,10 +386,10 @@ Cell[BoxData[
  RowBox[{"EntityValue", "[", 
   RowBox[{"\"\<CodeGolfProgrammingLanguage\>\"", ",", "\"\<EntityCount\>\""}],
    "]"}]], "Input",
- CellLabel->"In[16]:=",ExpressionUUID->"cb4015f7-de23-4e1e-b558-5f72bd441609"],
+ CellLabel->"In[17]:=",ExpressionUUID->"cb4015f7-de23-4e1e-b558-5f72bd441609"],
 
 Cell[BoxData["0"], "Output",
- CellLabel->"Out[16]=",ExpressionUUID->"e67950c1-4556-45b1-b65a-17da2254a160"]
+ CellLabel->"Out[17]=",ExpressionUUID->"1d460c58-d3c5-46f8-b8d4-8ab2502a0971"]
 }, Open  ]],
 
 Cell["\<\
@@ -410,25 +410,11 @@ Cell[BoxData[{
  CellChangeTimes->{{3.7798032476960297`*^9, 3.7798032548563166`*^9}, {
   3.7798032999676795`*^9, 3.7798033474878273`*^9}, {3.7798035614109488`*^9, 
   3.7798035706043386`*^9}, {3.7801637544280357`*^9, 3.7801637557221265`*^9}},
- CellLabel->"In[19]:=",ExpressionUUID->"4465c468-a7f2-4ee2-9376-17dede79765f"],
-
-Cell[BoxData["\<\"2019-10-18T12:38:33\"\>"], "Output",
- CellLabel->"Out[19]=",ExpressionUUID->"bc0635cf-2b10-4131-baad-54fb3f1537d4"],
-
-Cell[BoxData[
- TemplateBox[{
-  "Interpreter","timeout",
-   "\"A network operation for \\!\\(\\*RowBox[{\\\"Interpreter\\\"}]\\) timed \
-out. Please try again later.\"",2,20,1,24997367008966277917,"Local"},
-  "MessageTemplate"]], "Message", "MSG",
- ShowCellLabel->True,
- CellLabel->
-  "During evaluation of \
-In[19]:=",ExpressionUUID->"89c9f743-998c-458f-a2ac-2b469a446082"],
+ CellLabel->"In[20]:=",ExpressionUUID->"4465c468-a7f2-4ee2-9376-17dede79765f"],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"12184.5838394`", ",", 
+  RowBox[{"12664.4667621`", ",", 
    InterpretationBox[
     RowBox[{
      TagBox["Success",
@@ -445,9 +431,8 @@ Cell[BoxData[
                  Evaluator -> Automatic, Method -> "Preemptive"], 
                Alignment -> {Center, Center}, ImageSize -> 
                Dynamic[{
-                 Automatic, 
-                  3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
-                   Magnification])}]], 
+                 Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                  AbsoluteCurrentValue[Magnification]}]], 
               FrameBox[
                StyleBox["\"\[Checkmark]\"", 
                 Directive[
@@ -490,9 +475,8 @@ Cell[BoxData[
                 None, Evaluator -> Automatic, Method -> "Preemptive"], 
                Alignment -> {Center, Center}, ImageSize -> 
                Dynamic[{
-                 Automatic, 
-                  3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
-                   Magnification])}]], 
+                 Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                  AbsoluteCurrentValue[Magnification]}]], 
               FrameBox[
                StyleBox["\"\[Checkmark]\"", 
                 Directive[
@@ -554,7 +538,7 @@ Cell[BoxData[
     Editable->False,
     SelectWithContents->True,
     Selectable->False]}], "}"}]], "Output",
- CellLabel->"Out[20]=",ExpressionUUID->"170c03ba-0080-450e-b265-5ed94d96363e"]
+ CellLabel->"Out[21]=",ExpressionUUID->"35d18979-7d4f-4842-9590-c3c38b913379"]
 }, Open  ]],
 
 Cell["Now the programming language EntityStore is populated:", \
@@ -567,10 +551,13 @@ Cell[BoxData[
   RowBox[{"\"\<CodeGolfProgrammingLanguage\>\"", ",", "\"\<EntityCount\>\""}],
    "]"}]], "Input",
  CellChangeTimes->{{3.780155609718343*^9, 3.780155657330779*^9}},
- CellLabel->"In[21]:=",ExpressionUUID->"fbbd8e1f-c2c2-45e3-a02e-5b8b4054e47a"],
+ CellLabel->"In[22]:=",ExpressionUUID->"fbbd8e1f-c2c2-45e3-a02e-5b8b4054e47a"],
 
 Cell[BoxData["9637"], "Output",
- CellLabel->"Out[21]=",ExpressionUUID->"ff7101ee-515b-47e2-bbde-d35995539e0f"]
+ CellLabel->"Out[21]=",ExpressionUUID->"ff7101ee-515b-47e2-bbde-d35995539e0f"],
+
+Cell[BoxData["9736"], "Output",
+ CellLabel->"Out[22]=",ExpressionUUID->"bcd15fef-cf10-4057-a9c5-a650b2235b91"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -604,11 +591,11 @@ Cell[BoxData[{
    RowBox[{
     RowBox[{"Entity", "[", "\"\<StackExchange.Codegolf:Post\>\"", "]"}], "[", 
     "\"\<EntityStore\>\"", "]"}]}], "]"}]}], "Input",
- CellLabel->"In[22]:=",ExpressionUUID->"be77eeaa-31c7-4b5d-9e11-c85ab0fc03b0"],
+ CellLabel->"In[23]:=",ExpressionUUID->"be77eeaa-31c7-4b5d-9e11-c85ab0fc03b0"],
 
-Cell[BoxData["\<\"codegolf.stackexchange.com_WithMetadata_2019-10-18_16-08-14.\
+Cell[BoxData["\<\"codegolf.stackexchange.com_WithMetadata_2019-10-21_22-53-37.\
 mx\"\>"], "Output",
- CellLabel->"Out[23]=",ExpressionUUID->"309cc4fe-9867-4dd4-99ea-cd56281f9334"]
+ CellLabel->"Out[24]=",ExpressionUUID->"a891e170-8473-407f-a031-563117b9f9d7"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -634,16 +621,16 @@ Cell[BoxData[{
     "\"\<EntityStore\>\"", "]"}]}], "]"}]}], "Input",
  CellChangeTimes->{{3.779812070010163*^9, 3.77981208314629*^9}, {
   3.7798121250415883`*^9, 3.779812125177219*^9}},
- CellLabel->"In[24]:=",ExpressionUUID->"a4b3ad46-5b60-4904-a0cf-911e2ed77b15"],
+ CellLabel->"In[25]:=",ExpressionUUID->"a4b3ad46-5b60-4904-a0cf-911e2ed77b15"],
 
-Cell[BoxData["\<\"CodeGolfProgrammingLanguage_2019-10-18_16-08-59.mx\"\>"], \
+Cell[BoxData["\<\"CodeGolfProgrammingLanguage_2019-10-21_22-54-18.mx\"\>"], \
 "Output",
- CellLabel->"Out[25]=",ExpressionUUID->"0a3d5d58-6a2a-4d4f-b48f-bf8c0b2ea257"]
+ CellLabel->"Out[26]=",ExpressionUUID->"e7e9008f-5b4b-4516-8948-d5c2ab8681fa"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{958, 988},
-WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+WindowSize->{960, 997},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 TrackCellChangeTimes->False,
 FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
