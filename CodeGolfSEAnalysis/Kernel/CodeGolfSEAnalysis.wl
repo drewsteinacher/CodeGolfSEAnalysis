@@ -19,7 +19,7 @@ ClearAll["CodeGolfSEAnalysis`*`*"];
 
 <<CodeGolfSEAnalysis`GetCodeGolfMetadata`;
 
-SetAttributes[Evaluate[Names["GraphStore`*"]], {ReadProtected, Protected}];
+SetAttributes[Evaluate[Names["CodeGolfSEAnalysis`*"]], {ReadProtected, Protected}];
 
 End[];
 EndPackage[];
